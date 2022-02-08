@@ -11,6 +11,7 @@ assert(filename[-4:] == '.asm')
 code = Code()
 parser = Parser(filename)
 symbolTable = SymbolTable()
+
 f = open(filename[:-4] + '.hack', 'w')
 
 #1st pass
@@ -45,19 +46,11 @@ while parser.hasMoreCommands():
         dest = parser.dest()
         comp = parser.comp()
         jump = parser.jump()
-        if dest == '':
-            dest = 'null'
-        if jump == '':
-            jump = 'null'
-        
+
         dest = code.dest(dest)
         comp = code.comp(comp)
         jump = code.jump(jump)
 
         f.write('111' + comp + dest + jump + '\n')
+        
 f.close()
-"""
-ept:
-    print(parser.currentCommand)
-    print(parser.lines)
-"""

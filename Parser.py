@@ -47,10 +47,10 @@ class Parser:
         assert(self.commandType() == 'C_COMMAND')
         if '=' in self.currentCommand:
             return self.currentCommand.split('=')[0]  
-        return ''
+        return 'null'
 
     def jump(self):
         assert(self.commandType() == 'C_COMMAND')
         if ';' in self.currentCommand:
             return self.currentCommand.split(';')[1]
-        return ''
+        return 'null'
